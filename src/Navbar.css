@@ -1,0 +1,22 @@
+/* body {
+  @apply m-0 p-0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  @apply flex items-center justify-between sticky bg-[white] w-full z-[1000] px-3 py-px top-0;
+}
+
+.navbar .logo img {
+  @apply h-[100px];
+}
+
+.navbar .navlinks {
+  @apply flex gap-[30px];
+}
+
+.navbar .navlinks a {
+  @apply no-underline text-[rgb(5, 5, 5)] text-lg font-medium;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+} */
