@@ -1,0 +1,16 @@
+{
+  "name": "appointease",
+  "version": "1.0.0",
+  "description": "Backend of Appointease",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "cors",
+    "dotenv"
+  ],
+  "author": "Nancy Kaur",
+  "license": "ISC"
+}

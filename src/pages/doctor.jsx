@@ -13,8 +13,8 @@ const doctor = () => {
       <div style={{backgroundImage: `url(${image})`}} className="text-center bg-cover bg-center bg-no-repeat h-[350px]">
         <div className="pt-[7pc]">
           <h1 className="text-[white]">Our Doctors</h1>
-          <Link className="no-underline text-[white]"to="./">Home&nbsp;//</Link>
-          <Link className="no-underline text-[rgb(34,159,34)]"to="./doctor">All Doctors</Link>
+          <Link className="no-underline text-[white]"to="/">Home&nbsp;//</Link>
+          <Link className="no-underline text-[rgb(34,159,34)]"to="/doctor">All Doctors</Link>
         </div>
 </div>
       <AllDoctors />

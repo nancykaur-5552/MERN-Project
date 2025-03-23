@@ -17,7 +17,7 @@ const About = () => {
             <div style = {{backgroundImage: `url(${image})`}} className="text-center bg-[url(image.png)] bg-cover bg-center bg-no-repeat h-[350px]">
                 <div className="pt-[7pc]">
                     <h1 className="text-[white]">About Us</h1>
-                    <Link className="no-underline text-[white]" to="/home">Home&nbsp;//</Link>
+                    <Link className="no-underline text-[white]" to="/">Home&nbsp;//</Link>
                     <Link className="no-underline text-[rgb(34,159,34)]" to="/about">About Us</Link>
                 </div>
             </div>

@@ -2,14 +2,24 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter,Routes, Route } from 'react-router-dom'
 
-import Home from './Pages/home'
-import About from './Pages/About'
-import Contact from './Pages/contact'
-import Doctor from './Pages/doctor'
+import Home from './pages/home'
+import About from './pages/About'
+import Contact from './pages/contact'
+import Doctor from './pages/doctor'
 import CreateAcc from './Pages/createAcc'
-import LoginAcc from './Pages/loginAcc'
-import Navbar from './Pages/Navbar'
-import Footer from './Pages/Footer'
+import LoginAcc from './pages/loginAcc'
+import Navbar from './pages/Navbar'
+import Footer from './pages/Footer'
+import AppointmentForm from './pages/AppointmentForm'
+import John from './pages/Doctors/John'
+import Henry from './pages/Doctors/Henry'
+import JohnMillar from './pages/Doctors/JohnMillar'
+import Brittany from './pages/Doctors/Brittany'
+import Mukti from './pages/Doctors/Mukti'
+import Raymond from './pages/Doctors/Raymond'
+import Richard from './pages/Doctors/Richard'
+import Theresa from './pages/Doctors/Theresa'
+// import userProfile from './pages/userProfile'
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -23,6 +33,17 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route path="/createAcc" element={<CreateAcc />} />
       <Route path="/loginAcc" element={<LoginAcc />} />
       <Route path="/footer" element={<Footer/>}/>
+      <Route path='/Doctors/John' element={<John/>}/>
+      <Route path='/Doctors/Brittany' element={<Brittany/>}/>
+      <Route path='/Doctors/Henry' element={<Henry/>}/>
+      <Route path='/Doctors/Mukti' element={<Mukti/>}/>
+      <Route path='/Doctors/Raymond' element={<Raymond/>}/>
+      <Route path='/Doctors/Richard' element={<Richard/>}/>
+      <Route path='/Doctors/Theresa' element={<Theresa/>}/>
+      <Route path='/Doctors/JohnMillar' element={<JohnMillar/>}/>
+      <Route path='/AppointmentForm' element={<AppointmentForm/>}/>
+      {/* <Route path='/userProfile' element={<userProfile/>}/> */}
+
     </Routes>
   </BrowserRouter>
 )
