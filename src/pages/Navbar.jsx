@@ -27,11 +27,11 @@ const Navbar = () => {
         <div className="logo">
           <img className="h-[100px]" src={Logo1} alt="Appointease Logo" />
         </div>
-        <div className="flex flex-wrap gap-[38px]">
-          <Link className="no-underline text-[black] text-[24px] font-sans hover:text-[rgb(34,_159,_34)]" to="/">Home</Link>
-          <Link className="no-underline text-[black] text-[24px] font-sans hover:text-[rgb(34,_159,_34)]" to="/About">About Us</Link>
-          <Link className="no-underline text-[black] text-[24px] font-sans hover:text-[rgb(34,_159,_34)]" to="/doctor">All Doctors</Link>
-          <Link className="no-underline text-[black] text-[24px] font-sans hover:text-[rgb(34,_159,_34)]" to="/contact">Contact Us</Link>
+        <div className="flex gap-[38px]">
+          <Link className="no-underline text-[black] text-[24px] font-serif hover:text-[rgb(34,_159,_34)]" to="/">Home</Link>
+          <Link className="no-underline text-[black] text-[24px] font-serif hover:text-[rgb(34,_159,_34)]" to="/About">About Us</Link>
+          <Link className="no-underline text-[black] text-[24px] font-serif hover:text-[rgb(34,_159,_34)]" to="/doctor">All Doctors</Link>
+          <Link className="no-underline text-[black] text-[24px] font-serif hover:text-[rgb(34,_159,_34)]" to="/contact">Contact Us</Link>
         </div>
         <button className="hover:rounded-none hover:bg-[rgb(34,_159,_34)] hover:text-[white] bg-[#3573b5] text-[white] rounded-[9px] px-[20px] py-[10px] cursor-pointer border-none text-[16px]" 
         onClick={handleCreate}>

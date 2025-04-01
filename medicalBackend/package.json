@@ -12,5 +12,10 @@
     "dotenv"
   ],
   "author": "Nancy Kaur",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
+    "jsonwebtoken": "^9.0.2"
+  }
 }

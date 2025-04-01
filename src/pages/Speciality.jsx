@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import Dermatologist from '../assets/Home/Dermatologist.png';
 import Gastro from '../assets/Home/Gastro.png';
 import Gynecologist from '../assets/Home/Gynecologist.png';
@@ -18,30 +19,30 @@ const Speciality = () => {
         </p>
         <div className='flex flex-row flex-wrap justify-center'>
           <div className="flex flex-row flex-wrap justify-center gap-[58px] pt-[4em]">
-            <div className="flex flex-col">
-              <img className="h-[108px] w-[108px] rounded-[50%] hover:transition-[0.3s] hover:shadow-[2px_5px_4px_5px_white] hover:scale-90" src={Physician} alt="Physician" />
+            <NavLink to="/Doctors/John" className="flex no-underline text-[black] flex-col">
+              <img className="h-[108px] w-[108px] rounded-[50%] hover:transition-[0.3s] hover:shadow-[2px_5px_4px_5px_white] hover:scale-90" src={Physician} alt="Physician"/>
               <h4>General Physician</h4>
-            </div>
-            <div className="flex flex-col">
-              <img className="h-[108px] w-[108px] rounded-[50%] hover:transition-[0.3s] hover:shadow-[2px_5px_4px_5px_blue] hover:scale-90" src={Pediatricians} alt="Pediatricians" />
+            </NavLink>
+            <NavLink to="/Doctors/Richard" className="flex no-underline text-[black] flex-col">
+              <img className="h-[108px] w-[108px] rounded-[50%] hover:transition-[0.3s] hover:shadow-[2px_5px_4px_5px_white] hover:scale-90" src={Pediatricians} alt="Pediatricians" />
               <h4>Pediatricians</h4>
-            </div>
-            <div className="flex flex-col">
+            </NavLink>
+            <NavLink to="/Doctors/Henry" className="flex no-underline text-[black] flex-col">
               <img className="h-[108px] w-[108px] rounded-[50%] hover:transition-[0.3s] hover:shadow-[2px_5px_4px_5px_white] hover:scale-90" src={Neurologist} alt="Neurologist" />
               <h4>Neurologist</h4>
-            </div>
-            <div className="flex flex-col">
+            </NavLink>
+            <NavLink to="/Doctors/Brittany" className="flex no-underline text-[black] flex-col">
               <img className="h-[108px] w-[108px] rounded-[50%] hover:transition-[0.3s] hover:shadow-[2px_5px_4px_5px_white] hover:scale-90" src={Gynecologist} alt="Gynecologist" />
               <h4>Gynecologist</h4>
-            </div>
-            <div className="flex flex-col">
+            </NavLink>
+            <NavLink to="/Doctors/JohnMillar" className="flex no-underline text-[black] flex-col">
               <img className="h-[108px] w-[108px] rounded-[50%] hover:transition-[0.3s] hover:shadow-[2px_5px_4px_5px_white] hover:scale-90" src={Gastro} alt="Gastro" />
               <h4>Gastroenterologist</h4>
-            </div>
-            <div className="flex flex-col">
+            </NavLink>
+            <NavLink to="/Doctors/Theresa" className="flex no-underline text-[black] flex-col">
               <img className="h-[108px] w-[108px] rounded-[50%] hover:transition-[0.3s] hover:shadow-[2px_5px_4px_5px_white] hover:scale-90" src={Dermatologist} alt="Dermatologist" />
               <h4>Dermatologist</h4>
-            </div>
+            </NavLink>
           </div>
         </div>
       </div>

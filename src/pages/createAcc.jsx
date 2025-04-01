@@ -17,10 +17,7 @@ const createAcc = () => {
   const onFinish = async (values) => {
     console.log('Success: ', values);
     try {
-      const response = await axios.post(
-        'http://localhost:4000/api/auth/register',
-        values
-      );
+      const response = await axios.post("http://localhost:4000/api/auth/register",values);
       console.log(response.data); 
     } catch (error) {
       console.error(error); 

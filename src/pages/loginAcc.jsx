@@ -12,8 +12,8 @@ const loginAcc = () => {
         try {
             const response = await axios.post("http://localhost:4000/api/auth/login", values);
             if (response.data.success) {
-                sessionStorage.setItem("username", response.data.username);
-                sessionStorage.setItem("email", response.data.email);
+                sessionStorage.setItem("username", response.data.email);
+                sessionStorage.setItem("email", response.data.password);
                 console.log("Login Successfully.")
                 setTimeout(() => {
                     Navigate(response.data.redirectTo || "/home");

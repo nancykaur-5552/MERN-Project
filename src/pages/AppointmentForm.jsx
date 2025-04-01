@@ -10,13 +10,13 @@ const AppointmentForm = () => {
                     <form className="flex flex-col gap-[9px] pl-3 pt-[21px]">
                         <h1>Appointment Form</h1>
                         <label htmlFor="Name">Full Name</label>
-                        <input className="pl-[9px] h-[4vh] w-[22vw] border pl-3 rounded-sm border-solid border-[rgb(204,201,201)]" type="text" placeholder="Your Name" />
+                        <input className="pl-[9px] h-[4vh] w-[22vw] border rounded-sm border-solid border-[rgb(204,201,201)]" type="text" placeholder="Your Name" />
                         <label htmlFor="Phone">Phone Number</label>
-                        <input className="pl-[9px] h-[4vh] w-[22vw] border pl-3 rounded-sm border-solid border-[rgb(204,201,201)]" type="number" placeholder="Your Mobile Number" />
+                        <input className="pl-[9px] h-[4vh] w-[22vw] border rounded-sm border-solid border-[rgb(204,201,201)]" type="number" placeholder="Your Mobile Number" />
                         <label htmlFor="Email">Email</label>
-                        <input className="pl-[9px] h-[4vh] w-[22vw] border pl-3 rounded-sm border-solid border-[rgb(204,201,201)]" type="email" placeholder="Your Email" />
+                        <input className="pl-[9px] h-[4vh] w-[22vw] border rounded-sm border-solid border-[rgb(204,201,201)]" type="email" placeholder="Your Email" />
                         <label htmlFor="message">Message</label>
-                        <textarea className="pl-[9px] w-[22vw] h-[12vh] border pl-3 pt-3 rounded-sm border-solid border-[rgb(204,201,201)]" placeholder="Your Message"></textarea>
+                        <textarea className="pl-[9px] w-[22vw] h-[12vh] border pt-3 rounded-sm border-solid border-[rgb(204,201,201)]" placeholder="Your Message"></textarea>
                         <button className="h-[6vh] w-[11vw] bg-[#86B15D] text-[white] cursor-pointer border-none">Make Appointment</button>
                     </form>
                 </div>
