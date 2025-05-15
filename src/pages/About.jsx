@@ -3,11 +3,14 @@ import { Link, NavLink } from 'react-router-dom'
 import about1 from '../assets/About/about1.png'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import AppointmentForm from './AppointmentForm'
 import image from '../assets/About/image.png'
 import info from '../assets/About/Info.png';
-import doctor from './doctor'
-import Contact from './contact'
+import pic2 from '../assets/doctor/pic2.png';
+import pic3 from '../assets/doctor/pic3.png'
+import pic4 from '../assets/doctor/pic4.png'
+import pic5 from '../assets/doctor/pic6.png'
+import expert from '../assets/doctor/expertbg.jpg'
+import book from '../assets/About/book.jpg'
 const About = () => {
     return (
         <>
@@ -32,7 +35,7 @@ const About = () => {
                         <button className='h-[6vh] w-[13vw] border-none bg-[#3573b5] text-[16px] text-[white] rounded-[8px] hover: cursor-pointer hover:bg-[#609760]'><NavLink to="/contact" className="no-underline text-[white]"> Contact Us</NavLink></button>
                     </div>
                 </div>
-                
+
             </div>
 
             <div style={{ backgroundImage: `url(${info})` }} className="bg-no-repeat bg-cover h-[30vh] mt-[5em]">
@@ -57,8 +60,53 @@ const About = () => {
                     </div>
                 </div>
             </div>
-
-            <AppointmentForm />
+            <div className="text-center justify-center align-middle h-[73px] bg-[#4171bede]">
+                <h2 className='text-[white] pt-[20px]'>Ready to get our medical care? We’re always wait for serve you, <NavLink to="/AppointmentForm" className="no-underline text-[white] hover: cursor-pointer hover:text-[#0b130dd7]">Make an Appointment.</NavLink></h2>
+            </div>
+            <div style={{ backgroundImage: `url(${expert})` }}
+                className="text-center bg-no-repeat bg-cover text-[white] pt-[3em];">
+                <h2 className='pt-[20px]'>Meet Our Team</h2>
+                <h1>Other Specialists</h1>
+                <div className="flex flex-row flex-wrap justify-center items-center gap-[20px]">
+                    <NavLink to='/Doctors/Richard' className="text-[white] py-[2em] no-underline">
+                        <img className='h-[30vh]  rounded-[50%] hover:transition-[0.3s] hover:shadow-[2px_5px_4px_5px_white] hover:scale-90' src={pic2} alt="pic2" />
+                        <h2>Dr. Richard James</h2>
+                        <h3>Pediatrician</h3>
+                    </NavLink>
+                    <NavLink to='/Doctors/JohnMillar' className="text-[white] py-[2em] no-underline">
+                        <img className='h-[30vh]  rounded-[50%] hover:transition-[0.3s] hover:shadow-[2px_5px_4px_5px_white] hover:scale-90' src={pic3} alt="pic3" />
+                        <h2>Dr. John Millar</h2>
+                        <h3>Gastroenterologist</h3>
+                    </NavLink>
+                    <NavLink to='/Doctors/Theresa' className="text-[white] py-[2em] no-underline">
+                        <img className='h-[30vh]  rounded-[50%] hover:transition-[0.3s] hover:shadow-[2px_5px_4px_5px_white] hover:scale-90' src={pic4} alt="pic4" />
+                        <h2>Dr. Theresa Hamilton</h2>
+                        <h3>Dermatologist</h3>
+                    </NavLink>
+                    <NavLink to='/Doctors/Brittany' className="text-[white] py-[2em] no-underline">
+                        <img className='h-[30vh]  rounded-[50%] hover:transition-[0.3s] hover:shadow-[2px_5px_4px_5px_white] hover:scale-90' src={pic5} alt="pic5" />
+                        <h2>Dr. Brittany Robertson</h2>
+                        <h3>Gynecologist</h3>
+                    </NavLink>
+                </div>
+            </div>
+            <div className="flex justify-center items-center pt-[4em]">
+                <div className="w-4/5 max-w-[800px] bg-[rgba(183,178,178,0.13)] flex gap-[19px]">
+                    <img className="h-[70vh] w-[25vw]" src={book} alt="Contact" />
+                    <form className="flex flex-col gap-[8px] pl-3 pt-[21px]">
+                        <h1>Contact Form</h1>
+                        <label htmlFor="Name"></label>
+                        <input className="pl-[9px] w-[24vw] h-[5vh] border  rounded-sm border-solid border-[rgb(204,201,201)]" type="text" placeholder="Your Name" />
+                        <label htmlFor="Email"></label>
+                        <input className="pl-[9px] w-[24vw] h-[5vh] border  rounded-sm border-solid border-[rgb(204,201,201)]" type="email" placeholder="Your Email" />
+                        <label htmlFor="Subject"></label>
+                        <input className="pl-[9px] w-[24vw] h-[5vh] border rounded-sm border-solid border-[rgb(204,201,201)]" type="text" placeholder="Subject" />
+                        <label htmlFor="message"></label>
+                        <textarea className="pb-[12px] pl-[9px] w-[24vw] h-[20vh] border pt-3 rounded-sm border-solid border-[rgb(204,201,201)]" placeholder="Message"></textarea>
+                        <button className="h-[6vh] w-[11vw] bg-[rgb(34,159,34)] text-[white] cursor-pointer border-none">Send Message</button>
+                    </form>
+                </div>
+            </div>
             <Footer />
         </>
     )

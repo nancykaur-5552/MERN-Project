@@ -17,7 +17,7 @@ const AllDoctors = () => {
     return (
         <>
             <div style={{ backgroundImage: `url(${bg})` }} className="text-center flex-wrap bg-no-repeat bg-cover pt-[4em]">
-                <h3 className="text-[#357edd] text-[lg ]">Meet Our Team</h3>
+                <h3 className="text-[#357edd] text-[34px]">Meet Our Team</h3>
                 <h2 className="text-[55px] text-[black]">Our Expert Doctors</h2>
                 <div className="flex flex-row justify-center text-center flex-wrap gap-[25px] pt-[1em] pb-[1em] px-[23px]">
                     <NavLink to='/Doctors/John'

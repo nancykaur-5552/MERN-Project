@@ -7,6 +7,7 @@ const register = async(req, res, next) =>{
     try{
         const accessSecret = process.env.ACCESS_SECRET_KEY;
         console.log("AccessSecret: ", accessSecret);
+
         const registerResponse = await registrationValidation.validateAsync(req.body);
         const { username, email, password, mobile, address } = registerResponse;
         console.log(registerResponse);
@@ -29,8 +30,11 @@ const register = async(req, res, next) =>{
                 isNewUser: false,
             });
         }
+
         const jwtToken = jwt.sign(userInfo, accessSecret,  { expiresIn: "1h" });
         console.log(jwtToken);
+
+
         const newUser = new User({
             username,
             email,
@@ -45,6 +49,7 @@ const register = async(req, res, next) =>{
         return res.status(201).json({
             message: "User registered Successfully.",
             success: true,
+            redirectTo:"/loginAcc",
         });
     }catch(error){
         next(error);

@@ -61,13 +61,13 @@ const contact = () => {
                     <img src={cont} alt="Contact" />
                     <form className="flex flex-col gap-[8px] pl-3 pt-[21px]">
                         <label htmlFor="Name"></label>
-                        <input className="pl-[9px] w-[24vw] h-[7vh] border pl-3 rounded-sm border-solid border-[rgb(204,201,201)]" type="text" placeholder="Your Name" />
+                        <input className="pl-[9px] w-[24vw] h-[7vh] border  rounded-sm border-solid border-[rgb(204,201,201)]" type="text" placeholder="Your Name" />
                         <label htmlFor="Email"></label>
-                        <input className="pl-[9px] w-[24vw] h-[7vh] border pl-3 rounded-sm border-solid border-[rgb(204,201,201)]"type="email" placeholder="Your Email" />
+                        <input className="pl-[9px] w-[24vw] h-[7vh] border  rounded-sm border-solid border-[rgb(204,201,201)]"type="email" placeholder="Your Email" />
                         <label htmlFor="Subject"></label>
-                        <input className="pl-[9px] w-[24vw] h-[7vh] border pl-3 rounded-sm border-solid border-[rgb(204,201,201)]"type="text" placeholder="Subject" />
+                        <input className="pl-[9px] w-[24vw] h-[7vh] border rounded-sm border-solid border-[rgb(204,201,201)]"type="text" placeholder="Subject" />
                         <label htmlFor="message"></label>
-                        <textarea className="pl-[9px] w-[24vw] h-[20vh] border pl-3 pt-3 rounded-sm border-solid border-[rgb(204,201,201)]"placeholder="Message"></textarea>
+                        <textarea className="pl-[9px] w-[24vw] h-[20vh] border pt-3 rounded-sm border-solid border-[rgb(204,201,201)]"placeholder="Message"></textarea>
                         <button className="h-[6vh] w-[11vw] bg-[rgb(34,159,34)] text-[white] cursor-pointer border-none">Send Message</button>
                     </form>
                 </div>

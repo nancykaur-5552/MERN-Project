@@ -1,9 +1,8 @@
 import React,{useState} from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Form, Input } from 'antd'; 
-import Navbar from './Navbar';
-import Footer from './Footer';
+import { Button, Form, Input, notification } from 'antd'; 
 import axios from 'axios';
+import createbg from '../assets/createbg.jpg'
 
 const layout = {
   labelCol: { span: 8 },
@@ -19,6 +18,13 @@ const createAcc = () => {
     try {
       const response = await axios.post("http://localhost:4000/api/auth/register",values);
       console.log(response.data); 
+
+      notification.success({
+        message: 'Account Created.',
+        description: 'Your account has been created successfully.',
+        placement:'topRight',
+        duration: 3,
+      });
     } catch (error) {
       console.error(error); 
     }
@@ -29,80 +35,58 @@ const createAcc = () => {
   };
 
   return (
-    <>
-      <Navbar />
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          minHeight: '100vh', 
-          flexDirection: 'column',
-          
-        }}
+    <div className='h-screen bg-cover bg-center bg-no-repeat' style={{backgroundImage: `url(${createbg})`}}>
+      <div 
+        class="flex justify-center items-center min-h-screen float-right flex-col pr-[13pc]"
       >
         <Form
           {...layout}
-          onFinish={onFinish} className="bg-[#ffffff] p-[25px] mt-[4em] rounded-[8px] [box-shadow:0_4px_10px_rgba(0,_0,_0,_0.1)]"
+          onFinish={onFinish}
           onFinishFailed={onFinishFailed}
-          style={{ maxWidth: 600 ,
-            backgroundColor:'#ffffff',
-
-          }}
+          className ="w-[33vw] bg-transparent p-[25px] mt-[4em] rounded-[8px] border-[2px] border-[white] [box-shadow:0_4px_10px_rgba(0,_0,_0,_0.1)]"
         >
           <h2 
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',            
-          }}
+          className="text-[36px] text-center text-2xl font-bold mb-[2px]"
           >Create Account</h2>
           <p 
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',            
-          }}
-          >Please sign up to book an appointment.</p>
+          className='text-center pt-[1px]'
+        >Please sign up to book an appointment.</p>
           <Form.Item
+          className='pt-[22px] pr-[12pc]'
             name={['username']}
             label="Name"
           >
-            <Input />
+            <Input className='w-[22vw]'/>
           </Form.Item>
-          <Form.Item
+          <Form.Item className='pr-[12pc]'
             name={['email']}
             label="Email"
           >
-            <Input />
+            <Input className='w-[22vw]' />
           </Form.Item>
-          <Form.Item
+          <Form.Item className='pr-[12pc]'
             name={['password']}
             label="Password"
           >
-            <Input.Password />
+            <Input.Password className='w-[22vw]' />
           </Form.Item>
-          <Form.Item
+          <Form.Item className='pr-[12pc]'
             name={['mobile']}
             label="Mobile"
             rules={[
               { required: true, pattern: /^[0-9]{10}$/, message: 'Enter a valid 10-digit number!' },
             ]}
           >
-            <Input />
+            <Input className='w-[22vw]' />
           </Form.Item>
-          <Form.Item
+          <Form.Item className='pr-[12pc]'
             name={['address']}
             label="Address"
           >
-            <Input.TextArea />
+            <Input.TextArea className="w-[650px]"/>
           </Form.Item>
-          <Form.Item style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',            
-            }}>
-            <Button 
+          <Form.Item className='text-center item-center content-center pl-[6pc] pt-[12px]'>
+            <Button className='w-[11vw] hover:border-[white]'
             htmlType="submit" type="primary">
               Submit
             </Button>
@@ -115,8 +99,7 @@ const createAcc = () => {
           </Link>
         </p>
       </div>
-      <Footer />
-    </>
+    </div>
   );
 };
 

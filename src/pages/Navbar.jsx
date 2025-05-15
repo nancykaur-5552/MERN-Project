@@ -1,44 +1,64 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
 import Logo1 from '../assets/Logo1.png';
-import { Link } from 'react-router-dom';
-import loader from '../assets/loader.gif'
+import { Link, useNavigate } from 'react-router-dom';
+import { Spin, Dropdown, Menu, Avatar, Button, Drawer } from "antd";
+import { LogoutOutlined, ProfileOutlined, UserOutlined,MenuOutlined } from '@ant-design/icons';
+import Appointment from '../assets/appointment.png';
 
 const Navbar = () => {
-  const[isLoading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleCreate =()=>{
-    setLoading(true);
-    setTimeout(()=>{
-      setLoading(false);
-      window.location.href = "/createAcc";
-    },1500)
-  };
-
-  if(isLoading){
-    return (
-      <div className='flex justify-center items-center h-screen bg-white'>
-        <img src={loader} alt="Loading..." className='w-16 h-16'/>
-      </div>
-    );
-  }
   return (
-    <>
-      <nav className="flex items-center justify-between py-px sticky bg-[white] top-[0] w-full">
-        <div className="logo">
-          <img className="h-[100px]" src={Logo1} alt="Appointease Logo" />
+    <div>
+      {loading ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            background: "#f0f2f5",
+          }}
+        >
+          <Spin size="large" tip="Processing..." />
         </div>
-        <div className="flex gap-[38px]">
-          <Link className="no-underline text-[black] text-[24px] font-serif hover:text-[rgb(34,_159,_34)]" to="/">Home</Link>
-          <Link className="no-underline text-[black] text-[24px] font-serif hover:text-[rgb(34,_159,_34)]" to="/About">About Us</Link>
-          <Link className="no-underline text-[black] text-[24px] font-serif hover:text-[rgb(34,_159,_34)]" to="/doctor">All Doctors</Link>
-          <Link className="no-underline text-[black] text-[24px] font-serif hover:text-[rgb(34,_159,_34)]" to="/contact">Contact Us</Link>
-        </div>
-        <button className="hover:rounded-none hover:bg-[rgb(34,_159,_34)] hover:text-[white] bg-[#3573b5] text-[white] rounded-[9px] px-[20px] py-[10px] cursor-pointer border-none text-[16px]" 
-        onClick={handleCreate}>
-          Create Account</button>
-      </nav>
-    </>
-  )
-}
+      ) : (
+        <nav className="flex items-center justify-between py-px sticky bg-[white] top-[0] w-full px-6">
+          <div className="logo">
+            <img className="h-[100px]" src={Logo1} alt="Appointease Logo" />
+          </div>
+          <div className="flex gap-[38px]">
+            <Link className="no-underline text-[black] text-[24px] font-serif hover:text-[rgb(34,_159,_34)]" to="/Home">Home</Link>
+            <Link className="no-underline text-[black] text-[24px] font-serif hover:text-[rgb(34,_159,_34)]" to="/About">About Us</Link>
+            <Link className="no-underline text-[black] text-[24px] font-serif hover:text-[rgb(34,_159,_34)]" to="/doctor">All Doctors</Link>
+            <Link className="no-underline text-[black] text-[24px] font-serif hover:text-[rgb(34,_159,_34)]" to="/contact">Contact Us</Link>
+          </div>
+          <div className='flex items-center gap-[12px] pr-[23px]'>
+            <img onClick={() => navigate('/bookedAppointments')} src={Appointment} alt="booked appointment" className='h-[40px] w-[40px] cursor-pointer' />
+            <Dropdown menu = {{items:[
+              {
+                key:'profile',
+                label: 'My Profile',
+                icon: <ProfileOutlined/>,
+                onClick:()=>navigate('/userProfile'),
+              },
+              {
+                key: 'logout',
+                label: 'Logout',
+                icon: <LogoutOutlined/>,
+                onClick: ()=>navigate('/loginAcc'),
+              },
+            ]}}
+             >
 
-export default Navbar
+              <Avatar style={{backgroundColor: '#3573b5'}} icon={<UserOutlined/>} className='cursor-pointer h-[39px] w-[40px]'/>
+            </Dropdown>
+          </div>
+        </nav>
+      )}
+    </div>
+  );
+};
+
+export default Navbar;

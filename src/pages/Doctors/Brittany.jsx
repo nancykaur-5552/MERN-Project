@@ -1,8 +1,8 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import Navbar from '../Navbar'
 import Footer from '../Footer'
-import AppointmentForm from '../AppointmentForm'
+import cont from '../../assets/contact/cont.avif'
 import Pic5 from '../../assets/doctor/pic5.png'
 import Pic2 from '../../assets/doctor/pic2.png'
 import Pic3 from '../../assets/doctor/pic3.png'
@@ -17,24 +17,24 @@ import expert from '../../assets/doctor/expertbg.jpg'
 const Brittany = () => {
   const [para, setpara] = useState(
     <p>
-        It is a long established fact that is reader will be then distracted buy then thing and readable content off page when looking at that page layout. It is a long fact that on readable content ofpage. It is a long established fact that is reader will be the then distracted by the thing and readable content then page when looking at our and on established fact that page layout and more.It is a long established fact that is reader will be then distracted buy then thing and readable content off page when looking at that page layout.It is a long fact that on readable content of page.It is a long established fact that is reader will be the then distracted.
+      It is a long established fact that is reader will be then distracted buy then thing and readable content off page when looking at that page layout. It is a long fact that on readable content ofpage. It is a long established fact that is reader will be the then distracted by the thing and readable content then page when looking at our and on established fact that page layout and more.It is a long established fact that is reader will be then distracted buy then thing and readable content off page when looking at that page layout.It is a long fact that on readable content of page.It is a long established fact that is reader will be the then distracted.
     </p>
-);
-function skill() {
+  );
+  function skill() {
     setpara(
-        <>
+      <>
         <h2>M.D. , MBBS</h2>
         <p>Expertise in diagnosing, treating, and managing a wide range of adult diseases, such as diabetes, hypertension, and cardiovascular disorders. Understanding of pharmacology ensures appropriate medication prescriptions while considering potential side effects and drug interactions.Effective time management allows for balancing patient consultations, hospital rounds, and medical documentation using Electronic Health Records (EHR). Collaboration with other healthcare professionals strengthens teamwork and leadership, while continuous learning keeps medical knowledge up to date.</p>
-        </>
+      </>
     );
-}
-function info() {
+  }
+  function info() {
     setpara(
-        <p>
-            It is a long established fact that is reader will be then distracted buy then thing and readable content off page when looking at that page layout. It is a long fact that on readable content ofpage. It is a long established fact that is reader will be the then distracted by the thing and readable content then page when looking at our and on established fact that page layout and more.It is a long established fact that is reader will be then distracted buy then thing and readable content off page when looking at that page layout.It is a long fact that on readable content of page.It is a long established fact that is reader will be the then distracted.
-        </p>
+      <p>
+        It is a long established fact that is reader will be then distracted buy then thing and readable content off page when looking at that page layout. It is a long fact that on readable content ofpage. It is a long established fact that is reader will be the then distracted by the thing and readable content then page when looking at our and on established fact that page layout and more.It is a long established fact that is reader will be then distracted buy then thing and readable content off page when looking at that page layout.It is a long fact that on readable content of page.It is a long established fact that is reader will be the then distracted.
+      </p>
     )
-}
+  }
   return (
     <>
       <Navbar />
@@ -97,7 +97,23 @@ function info() {
           </NavLink>
         </div>
       </div>
-      <AppointmentForm />
+      <div className="flex justify-center items-center pt-[4em]">
+        <div className="w-4/5 max-w-[800px] bg-[rgba(183,178,178,0.13)] flex gap-[19px]">
+          <img src={cont} alt="Contact" />
+          <form className="flex flex-col gap-[8px] pl-3 pt-[21px]">
+          <h1>Contact Form</h1>
+            <label htmlFor="Name"></label>
+            <input className="pl-[9px] w-[24vw] h-[7vh] border  rounded-sm border-solid border-[rgb(204,201,201)]" type="text" placeholder="Your Name" />
+            <label htmlFor="Email"></label>
+            <input className="pl-[9px] w-[24vw] h-[7vh] border  rounded-sm border-solid border-[rgb(204,201,201)]" type="email" placeholder="Your Email" />
+            <label htmlFor="Subject"></label>
+            <input className="pl-[9px] w-[24vw] h-[7vh] border rounded-sm border-solid border-[rgb(204,201,201)]" type="text" placeholder="Subject" />
+            <label htmlFor="message"></label>
+            <textarea className="pl-[9px] w-[24vw] h-[20vh] border pt-3 rounded-sm border-solid border-[rgb(204,201,201)]" placeholder="Message"></textarea>
+            <button className="h-[6vh] w-[11vw] bg-[rgb(34,159,34)] text-[white] cursor-pointer border-none">Send Message</button>
+          </form>
+        </div>
+      </div>
       <Footer />
     </>
   )

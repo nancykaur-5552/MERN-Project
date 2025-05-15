@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import Navbar from '../Navbar'
 import Footer from '../Footer'
-import AppointmentForm from '../AppointmentForm'
+import cont from '../../assets/contact/cont.avif'
 import pic1 from '../../assets/doctor/pic1.png'
 import pic2 from '../../assets/doctor/pic2.png'
 import pic3 from '../../assets/doctor/pic3.png'
@@ -96,7 +96,23 @@ const John = () => {
                     </NavLink>
                 </div>
             </div>
-            <AppointmentForm />
+            <div className="flex justify-center items-center pt-[4em]">
+                            <div className="w-4/5 max-w-[800px] bg-[rgba(183,178,178,0.13)] flex gap-[19px]">
+                                <img src={cont} alt="Contact" />
+                                <form className="flex flex-col gap-[8px] pl-3 pt-[21px]">
+                                <h1>Contact Form</h1>
+                                    <label htmlFor="Name"></label>
+                                    <input className="pl-[9px] w-[24vw] h-[7vh] border  rounded-sm border-solid border-[rgb(204,201,201)]" type="text" placeholder="Your Name" />
+                                    <label htmlFor="Email"></label>
+                                    <input className="pl-[9px] w-[24vw] h-[7vh] border  rounded-sm border-solid border-[rgb(204,201,201)]" type="email" placeholder="Your Email" />
+                                    <label htmlFor="Subject"></label>
+                                    <input className="pl-[9px] w-[24vw] h-[7vh] border rounded-sm border-solid border-[rgb(204,201,201)]" type="text" placeholder="Subject" />
+                                    <label htmlFor="message"></label>
+                                    <textarea className="pl-[9px] w-[24vw] h-[20vh] border pt-3 rounded-sm border-solid border-[rgb(204,201,201)]" placeholder="Message"></textarea>
+                                    <button className="h-[6vh] w-[11vw] bg-[rgb(34,159,34)] text-[white] cursor-pointer border-none">Send Message</button>
+                                </form>
+                            </div>
+                        </div>
             <Footer />
         </>
     )

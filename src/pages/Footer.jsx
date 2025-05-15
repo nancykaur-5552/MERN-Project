@@ -2,6 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo1 from '../assets/Logo1.png';
 import up from '../assets/up.png';
+
+const scrollTopBtn = ()=>{
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
 function Footer() {
     return (
         <>
@@ -35,10 +42,10 @@ function Footer() {
                 <hr className="mt-[77px] mx-10" />
                 <div className="flex flex-row justify-center mt-[23px]">
                     <div className="footer-text">
-                        <p className="text-center text-[white] pt-[15px]">Copyright &copy; 2023 by Nancy | All Rights Reserved.</p>
+                        <p className="text-center text-[white] pt-[15px]">Copyright &copy; 2025 by Nancy | All Rights Reserved.</p>
                     </div>
-                    <div className="footer-iconTop">
-                        <Link to="/"><img src={up} alt="Upper Arrow" /></Link>
+                    <div className="footer-iconTop" onClick={scrollTopBtn}>
+                        <img src={up} alt="Upper Arrow" />
                     </div>
                 </div>
             </div>

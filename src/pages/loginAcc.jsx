@@ -1,63 +1,86 @@
-import React from 'react'
-import {NavLink } from 'react-router-dom'
-import Navbar from './Navbar';
-import Footer from './Footer';
+import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, notification } from 'antd';
+import loginbg from '../assets/loginbg.avif'
 
+const LoginAcc = () => {
+  const navigate = useNavigate(); 
 
-const loginAcc = () => {
-    const onFinish = async (values) => {
-        console.log("Success:", values);
-        try {
-            const response = await axios.post("http://localhost:4000/api/auth/login", values);
-            if (response.data.success) {
-                sessionStorage.setItem("username", response.data.email);
-                sessionStorage.setItem("email", response.data.password);
-                console.log("Login Successfully.")
-                setTimeout(() => {
-                    Navigate(response.data.redirectTo || "/home");
-                }, 1500);
-            }
-        }
-        catch (error) {
-            console.log("Registration failed: ", error);
-        }
-    };
-    return (
-        <>
-            <Navbar />
-            <div className="flex justify-center items-center">
-                <Form
-                    name="basic"
-                    onFinish={onFinish}
-                    className="bg-[#ffffff] p-[25px] mt-[4em] rounded-[8px] [box-shadow:0_4px_10px_rgba(0,_0,_0,_0.1)] w-[350px]">
-                    <h2 className='text-center mb-[10px] text-[#444] pt-[5px]'>Login Account</h2>
-                    <p className='text-center pb-[16px]'>Please login to book an appointment.</p>
-                    <Form.Item label="Email"
-                        name="email"
-                        className='block mb-[5px] text-[14px] text-[#555]'
-                        rules={[{ required: true, message: "Please input your email!" }]}
-                    >
-                        <Input className='w-full p-[10px] mb-[15px] border-[1px] border-solid border-[#ddd] rounded-[5px] text-[14px]' type="email" id="email" name="email" placeholder="Enter your email" required />
-                    </Form.Item>
-                    <Form.Item
-                        label="Password" className='block mb-[5px] text-[14px] text-[#555]' name="password" rules={[{ required: true, message: "Please input your password!" }]}
-                    >
-                        <Input className='w-full p-[10px] mb-[15px] border-[1px] border-solid border-[#ddd] rounded-[5px] text-[14px]' type="password" id="password" name="password" placeholder="Enter your password" required />
-                    </Form.Item>
-                    <Form.Item>
-                        <Button type="primary" htmltype="submit" className="w-full p-[10px]  bg-[#0066cc] text-[white] border-none rounded-[5px] cursor-pointer text-[16px] hover:bg-[#004b99]">
-                            Login
-                        </Button>
-                    </Form.Item>
+  const onFinish = async (values) => {
+    console.log("Success:", values);
+    try {
+      const response = await axios.post("http://localhost:4000/api/auth/login", values);
 
-                    <p className="pt-[2em]">Don't have an account? <NavLink to='/createAcc'>Create here</NavLink></p>
-                </Form>
-            </div>
-            <Footer />
-        </>
-    )
-}
+      if (response.data.success) {
+        sessionStorage.setItem("username", response.data.email);
+        sessionStorage.setItem("email", response.data.password);
 
-export default loginAcc;
+        notification.success({
+          message: 'Login Successful',
+          description: 'Welcome back! You have logged in successfully.',
+          placement: 'topRight',
+        });
+
+        setTimeout(() => {
+          navigate(response.data.redirectTo || "/home");
+        }, 1500);
+      } else {
+        notification.error({
+          message: 'Login Failed',
+          description: response.data.message || 'Invalid credentials.',
+          placement: 'topRight',
+        });
+      }
+    } catch (error) {
+      console.log("Login failed: ", error);
+      notification.error({
+        message: 'Login Failed',
+        description: error?.response?.data?.message ||'Something went wrong. Please try again.',
+        placement: 'topRight',
+      });
+    }
+  };
+
+  return (
+    <div className='h-screen bg-cover bg-center bg-no-repeat' style={{backgroundImage: `url(${loginbg})`}}>
+      <div class="flex justify-center items-center min-h-screen flex-col ">
+        <Form
+          name="basic"
+          onFinish={onFinish}
+          className ="bg-transparent p-[25px] mt-[4em] rounded-[8px] border-[2px] border-[white] [box-shadow:0_4px_10px_rgba(0,_0,_0,_0.1)]"
+        >
+          <h2 className="text-center text-[32px] mb-[10px] text-[#444] pt-[5px]">Login Account</h2>
+          <p className="text-center pb-[16px]">Please login to book an appointment.</p>
+          <Form.Item
+            label="Email"
+            name="email"
+            className="block mb-[2pc] pt-[12px] text-[14px] text-[#555]"
+            rules={[{ required: true, message: "Please input your email!" }]}
+          >
+            <Input type="email" placeholder="Enter your email" />
+          </Form.Item>
+
+          <Form.Item
+            label="Password"
+            name="password"
+            className="block mb-[5px] text-[14px] text-[#555]"
+            rules={[{ required: true, message: "Please input your password!" }]}
+          >
+            <Input.Password placeholder="Enter your password" />
+          </Form.Item>
+
+          <Form.Item className='pt-[22px]'>
+            <Button type="primary" htmlType="submit" className="w-full bg-[#0066cc] text-white rounded-[5px] hover:bg-[#004b99] hover:border-[white]">
+              Login
+            </Button>
+          </Form.Item>
+
+          <p className="pt-[2em] text-center">Don't have an account? <NavLink to='/createAcc'>Create here</NavLink></p>
+        </Form>
+      </div>
+    </div>
+  );
+};
+
+export default LoginAcc;

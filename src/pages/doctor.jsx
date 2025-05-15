@@ -4,15 +4,22 @@ import AllDoctors from './AllDoctors'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import image from '../assets/doctor/image.png';
-import AppointmentForm from './AppointmentForm';
 import about1 from '../assets/About/about1.png';
 import ambulance from '../assets/doctor/ambulance.png';
 import care from '../assets/doctor/care.png';
 import laboratory from '../assets/doctor/laboratory.png';
 import global from '../assets/doctor/global.png';
+import play from "../assets/Home/play.gif";
+import bg2 from "../assets/Home/bg2.jpg";
 
 
 const doctor = () => {
+  function ContactBox() {
+    window.open("/contact", "_self");
+  }
+  function doctorBox() {
+    window.open("/doctor", "_self");
+  }
    return (
     <>
       <Navbar />
@@ -59,10 +66,47 @@ const doctor = () => {
     </div>
   </div>
 </div>
-
-      <div className="container">
+      <div
+                  style={{ backgroundImage: `url(${bg2})` }}
+                  className="bg-no-repeat bg-cover h-[54vh] text-[white] flex flex-row items-center justify-center py-[2em]"
+                >
+                  <div className="flex flex-row items-center justify-center gap-[120px]">
+                    <div className="left-side">
+                      <h3>Get in Touch</h3>
+                      <h1 className="text-[56px] pt-[13px]">
+                        Best Medical & Health <br /> Care Near Your City
+                      </h1>
+                      <h4 className="pt-[2em]">
+                        We've 25 Years of experience in Medical Services.
+                      </h4>
+                      <div className=" flex flex-row flex-wrap pt-[2em] gap-[10px]">
+                        <button
+                          className="h-[6vh] w-[11vw] text-[white] text-[17px] p-2.5 rounded-[20px] border-none bg-[rgb(89,211,89)] hover:cursor-pointer shadow-[2px_3px_4px_2px_green]"
+                          onClick={ContactBox}
+                        >
+                          <b>Contact Us | +</b>
+                        </button>
+                        <button
+                          className="h-[6vh] w-[11vw] text-[white] text-[17px] p-2.5 rounded-[20px] border-none bg-[#3573b5] hover:cursor-pointer shadow-[2px_3px_4px_2px_#1d548e]"
+                          onClick={doctorBox}
+                        >
+                          <b>Doctors List | +</b>
+                        </button>
+                      </div>
+                    </div>
+                    <div className="right-side">
+                      <img
+                        className="h-[10vh] rounded-[50%] cursor-pointer transform: 3s ease-in-out"
+                        src={play}
+                        alt="play"
+                        onClick={() => console.log("playVideo() triggered")}
+                      />
+                    </div>
+                  </div>
+                </div>
+      {/* <div className="container">
         <AppointmentForm />
-      </div>
+      </div> */}
       <Footer />
     </>
   )
