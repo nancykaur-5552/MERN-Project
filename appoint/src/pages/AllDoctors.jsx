@@ -1,7 +1,9 @@
 import React from 'react'
 import { HomeOutlined, RightOutlined } from '@ant-design/icons';
 import DoctorTable from './doctorTable';
-const AllDoctors = () => {
+import { useNavigate } from 'react-router';
+const AllDoctors = ({doctors}) => {
+  const navigate = useNavigate();
   return (
     <div>
       <div className='flex flex-row flex-wrap gap-[12px]'>
@@ -13,7 +15,7 @@ const AllDoctors = () => {
         />
       </div>
       <div>
-        <DoctorTable/>
+        <DoctorTable doctors = {doctors}/>
       </div>
     </div>
   )

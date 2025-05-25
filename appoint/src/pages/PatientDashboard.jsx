@@ -1,66 +1,64 @@
 import React, { useState, useEffect } from 'react';
 import { HomeOutlined, RightOutlined } from '@ant-design/icons';
-import PatientTable from './patientTable';
-import PatientForm from './AddPatient';
 import { useNavigate } from 'react-router';
 import axios from 'axios'
+import { Card, Spin, Alert, Table, Typography  } from 'antd'
 
 
 const PatientDashboard = () => {
-  const [isFormVisible, setIsFormVisible] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    address: "",
-    email: "",
-    disease: "",
-    mobile: ""
-  });
-
-  const [users, setUsers] = useState([]);
-
-  useEffect(()=>{
-    const savedUser = localStorage.getItem('users');
-    if(savedUser){
-      setUsers(JSON.parse(savedUser));
-    }
-  },[]);
-
-  useEffect(()=>{
-    if(users.length>0){
-      localStorage.setItem('users', JSON.stringify(users));
-    }
-  },[users]);
-  const navigate = useNavigate();
-
-  const showForm = () => setIsFormVisible(true);
-  const hideForm = () => setIsFormVisible(false);
-
-  const handleAddUser = async (formValues) => {
-    try {
-      const response = await axios.post("http://localhost:4000/api/auth/AddUser", formValues);
-      console.log("User Added: ", response.data);
-
-      const addedUser = {
-        ...(response.data.user || formValues),
-        key: formValues.email,
-      };
-      setUsers(prev => [...prev, addedUser]);
-
-      setFormData({
-        name: "",
-        age: "",
-        address: "",
-        email: "",
-        disease: "",
-        mobile: ""
-      });
-
-    } catch (error) {
-      console.error("Error adding user: ", error);
-    }
-  };
-
+  const [profile, setProfile] = useState(null);
+    const [appointments, setAppointments] = useState([]);
+    const [payments, setPayments] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+  
+    const fetchUserProfile = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        console.log("Token received by backend: ", token);
+  
+        if (!token) {
+          setError('User is not authenticated. Please login.');
+          setLoading(false);
+          return;
+        }
+  
+        const response = await axios.get('http://localhost:4000/api/auth/profile', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setProfile(response.data);
+      } catch (error) {
+        setError('Failed to fetch profile.');
+        console.log(error.response?.data || error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    useEffect(() => {
+      fetchUserProfile();
+    }, []);
+  
+    if (loading) return <Spin tip="Loading profile..." />;
+  
+    if (error) return <Alert message={error} type="error" showIcon />;
+  
+    const appointmentColumns = [
+      { title: 'Date', dataIndex: 'date', key: 'date' },
+      { title: 'Time', dataIndex: 'time', key: 'time' },
+      { title: 'Doctor', dataIndex: 'doctorName', key: 'doctorName' },
+      { title: 'Status', dataIndex: 'status', key: 'status' }
+    ];
+  
+    const paymentColumns = [
+      { title: 'Amount', dataIndex: 'amount', key: 'amount' },
+      { title: 'Status', dataIndex: 'status', key: 'status' },
+      { title: 'Payment Date', dataIndex: 'createdAt', key: 'createdAt' }
+    ];
+  
   return (
     <div className='pl-[19px] pr-[19px] min-h-screen py-[20px] relative'>
       <div className='flex flex-row flex-wrap gap-[12px] items-center'>
@@ -70,33 +68,38 @@ const PatientDashboard = () => {
           className='text-[24px] cursor-pointer transition'
           onClick={() => navigate('./DoctorDashboard')}
         />
-        <div className='ml-auto pt-[12px]'>
-          <button
-            className='bg-[#65d377e0] p-[9px] rounded-[6px] w-[6vw]'
-            onClick={showForm}
-          >
-            Add Patient
-          </button>
-        </div>
       </div>
+      <div>
+        <Card title="Patient Profile" style={{ maxWidth: 600, margin: '2rem auto' }}>
+          <p><strong>Name:</strong> {profile.username}</p>
+          <p><strong>Email:</strong> {profile.email}</p>
+          <p><strong>Phone:</strong> {profile.mobile}</p>
+          <p><strong>Address:</strong> {profile.address}</p>
+        </Card>
+         <Card className='m-[10px] border-[2px] border-solid border-black'>
+          <Typography.Title level={4}>Booked Appointments</Typography.Title>
+          <Table
+            dataSource={appointments}
+            columns={appointmentColumns}
+            rowKey="_id"
+            pagination={{ pageSize: 5 }}
+            bordered
+          />
+        </Card>
 
-      <PatientTable users={users} />
-      {isFormVisible && (
-        <div className="absolute top-[3%] left-1/2 transform -translate-x-1/2 bg-white p-6 rounded-lg shadow-xl w-[90%] max-w-[500px] z-50">
-          <button
-            className="absolute top-2 right-3 text-xl font-bold text-gray-600 hover:text-red-500"
-            onClick={hideForm}
-          >
-            ×
-          </button>
-          <PatientForm
-            formData={formData}
-            setFormData={setFormData}
-            handleAddUser={handleAddUser}
-            onClose={hideForm} />
-        </div>
-      )}
-    </div>
+        <Card className='m-[10px] border-[2px] pt-[2em] border-solid border-black'>
+          <Typography.Title level={4}>Payment History</Typography.Title>
+          <Table
+            dataSource={payments}
+            columns={paymentColumns}
+            rowKey="_id"
+            pagination={{ pageSize: 5 }}
+            bordered
+          />
+        </Card>
+
+      </div>
+  </div>
   );
 };
 

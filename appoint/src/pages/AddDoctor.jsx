@@ -1,10 +1,30 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { HomeOutlined, RightOutlined } from '@ant-design/icons';
 import { Form, Input, InputNumber, Button } from 'antd';
 import { useNavigate } from 'react-router-dom'; // You might be using react-router for navigation
 
-const AddDoctorForm = ({ initialValues, onAddDoctor, onCancel }) => {
+const AddDoctorForm = ({ initialValues, onAddDoctor = () => {}, onCancel }) => {
+  const [form] = Form.useForm();
   const navigate = useNavigate();
+
+   useEffect(() => {
+    if (initialValues) {
+      form.setFieldsValue(initialValues);
+    } else {
+      form.resetFields();
+    }
+  }, [initialValues, form]);
+
+  const handleFinish = (values) => {
+    onAddDoctor(values);
+    form.resetFields();
+  };
+
+  const handleCancel = () => {
+    form.resetFields();
+    onCancel();
+  };
+
 
   return (
     <>
@@ -17,14 +37,17 @@ const AddDoctorForm = ({ initialValues, onAddDoctor, onCancel }) => {
         />
       </div>
       <div className="bg-[white] p-[15px] rounded-[15px]">
-        <div className="pb-[22px]">
-          <h2 className="font-bold text-[#737171] text-[20px]">Add Doctor</h2>
+         <div className="pb-[22px]">
+          <h2 className="font-bold text-[#737171] text-[20px]">
+            {initialValues ? 'Edit Doctor' : 'Add Doctor'}
+          </h2>
         </div>
         <div>
           <Form
-            initialValues={initialValues}
-            onFinish={onAddDoctor}
-            layout="vertical"
+            form={form}
+          layout="vertical"
+          onFinish={handleFinish}
+          initialValues={initialValues || {}}
           >
             <Form.Item
               label="Name"

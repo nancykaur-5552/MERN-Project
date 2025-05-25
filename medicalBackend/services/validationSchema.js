@@ -27,5 +27,18 @@ const addUserValidation = joi.object({
     .required()
 });
 
+const forgotValidation = joi.object({
+  email: joi.string().email().required(),
+});
 
-module.exports = {registrationValidation, loginValidation, addUserValidation}
+const resetPasswordValidation = joi.object({
+  email: joi.string().email().required(),
+  otp: joi.string().required(),
+  newPassword: joi.string().min(6).required(),
+  confirmNewPassword: joi.any().valid(joi.ref("newPassword")).required().messages({
+    "any.only": "Passwords do not match!",
+}),
+});
+
+
+module.exports = {registrationValidation, loginValidation, addUserValidation, forgotValidation, resetPasswordValidation}

@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter,Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Home from './pages/home'
 import About from './pages/About'
@@ -21,30 +21,48 @@ import BookedAppointments from './pages/BookedAppoinments'
 import Richard from './pages/Doctors/Richard'
 import Theresa from './pages/Doctors/Theresa'
 import UserProfile from './pages/userProfile'
-import './index.css';
+import ResetPassword from './pages/resetPassword'
+import ForgotPassword from './pages/forgotPassword'
+import ContactForm from './pages/contactForm'
 
+import './index.css';
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
+
+const stripePromise = loadStripe('pk_test_51RN8v0GawIVAVtdcF2WmOmrmlTMcwUOy7BInJ6VVvhb9C73M8PfqBD24dVU3HSsKiEtTi5teL5iGDIzMk1XUigOq00od0gI3Rc')
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<CreateAcc/>} />
+      <Route path="/" element={<CreateAcc />} />
       <Route path="/loginAcc" element={<LoginAcc />} />
-      <Route path="/home" element={<Home/>} />
+      <Route path="/home" element={<Home />} />
       <Route path="/Navbar" element={<Navbar />} />
       <Route path="/about" element={<About />} />
       <Route path="/doctor" element={<Doctor />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/footer" element={<Footer/>}/>
-      <Route path='/Doctors/John' element={<John/>}/>
-      <Route path='/Doctors/Brittany' element={<Brittany/>}/>
-      <Route path='/Doctors/Henry' element={<Henry/>}/>
-      <Route path='/Doctors/Mukti' element={<Mukti/>}/>
-      <Route path='/Doctors/Raymond' element={<Raymond/>}/>
-      <Route path='/Doctors/Richard' element={<Richard/>}/>
-      <Route path='/Doctors/Theresa' element={<Theresa/>}/>
-      <Route path='/Doctors/JohnMillar' element={<JohnMillar/>}/>
-      <Route path='/AppointmentForm' element={<AppointmentForm/>}/>
-      <Route path='/userProfile' element={<UserProfile/>}/>
-      <Route path = '/BookedAppointments' element= {<BookedAppointments/>}/>
+      <Route path="/footer" element={<Footer />} />
+      <Route path="/forgotPassword" element={<ForgotPassword />} />
+      <Route path="/resetPassword" element={<ResetPassword />} />
+      <Route path='/Doctors/John' element={<John />} />
+      <Route path='/Doctors/Brittany' element={<Brittany />} />
+      <Route path='/Doctors/Henry' element={<Henry />} />
+      <Route path='/Doctors/Mukti' element={<Mukti />} />
+      <Route path='/Doctors/Raymond' element={<Raymond />} />
+      <Route path='/Doctors/Richard' element={<Richard />} />
+      <Route path='/Doctors/Theresa' element={<Theresa />} />
+      <Route path='/Doctors/JohnMillar' element={<JohnMillar />} />
+      <Route path='/userProfile' element={<UserProfile />} />
+      <Route path='/contactForm' element={<ContactForm/>}/>
+
+      <Route
+        path='/AppointmentForm'
+        element={
+          <Elements stripe={stripePromise}>
+            <AppointmentForm />
+          </Elements>
+        }
+      />
+      <Route path='/BookedAppointments' element={<BookedAppointments />} />
 
     </Routes>
   </BrowserRouter>

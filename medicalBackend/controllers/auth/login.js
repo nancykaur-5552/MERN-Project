@@ -2,6 +2,7 @@ const User = require("../../models/User.model");
 const { loginValidation } = require("../../services/validationSchema");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const bcrypt = require('bcryptjs');
 
 const login = async (req, res, next) => {
   try {
@@ -26,7 +27,7 @@ const login = async (req, res, next) => {
       });
     }
 
-    const passwordMatching = password === existingUser.password;
+    const passwordMatching = await bcrypt.compare(password, existingUser.password);
 
     if (!passwordMatching) {
       return res.status(400).json({
@@ -37,6 +38,7 @@ const login = async (req, res, next) => {
 
     const jwttoken = jwt.sign(
       {
+        id: existingUser._id, 
         username: existingUser.username,
         email: existingUser.email,
       },

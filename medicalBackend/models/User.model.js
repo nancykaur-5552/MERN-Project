@@ -16,7 +16,7 @@ const UserSchema = new Schema({
     password:{
         type: String,
         minlength: 3,
-        maxlength: 40
+        maxlength: 100,
     },
     mobile:{
         type: Number,
@@ -29,12 +29,10 @@ const UserSchema = new Schema({
     },
     disease:{
         type:String,
-        required: true,
     },
     age:{
         type:Number,
-        required:true,
-    }
+    },
 });
 
 module.exports = model("User", UserSchema, "users");

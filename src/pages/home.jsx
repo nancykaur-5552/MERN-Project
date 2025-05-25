@@ -5,10 +5,8 @@ import Footer from "./Footer";
 import Expert from "./Expert";
 import index from "../assets/index.png";
 import Speciality from "./Speciality";
-import play from "../assets/Home/play.gif";
 import bg2 from "../assets/Home/bg2.jpg";
 import { Spin } from "antd";
-// import loader from '../assets/loader.gif';
 
 const Home = () => {
   function ContactBox() {
@@ -20,7 +18,6 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate a loading time (e.g., 2 seconds)
     setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -29,8 +26,6 @@ const Home = () => {
   return (
     <div>
       {loading ? (
-        // Loader Screen
-        
         <div
           style={{
             display: "flex",
@@ -43,15 +38,14 @@ const Home = () => {
           <Spin size="large" tip="Loading..." />
         </div>
       ) : (
-        // Main Website Content (Wrapped in a Parent <div>)
         <div>
           <Navbar />
-          <div className="flex flex-row bg-[#3573b5] text-[white]">
+          <div className="flex flex-row flex-wrap bg-[#3573b5] text-[white]">
             <div className="flex flex-col">
-              <h1 className="pt-[74px] text-[64px] ml-[57px] mb-[5px] font-trebuchet font-normal leading-tight">
+              <h1 className="pt-[74px] text-[64px] ml-[52px] mb-[5px] font-trebuchet font-normal leading-tight">
                 Book Appointment <br /> With Trusted Doctors
               </h1>
-              <h2 className="text-[22px] ml-[65px] pt-[3px]">
+              <h2 className="text-[22px] ml-[52px] pt-[3px]">
                 Simple browse through our extensive list of trusted doctors,
                 <br />
                 schedule your appointment hassle-free.
@@ -67,7 +61,7 @@ const Home = () => {
             </div>
             <div className="">
               <img
-                className="h-[584px] w-[827px] "
+                className="h-[584px] w-[827px]"
                 src={index}
                 alt="Home image"
               />
@@ -102,14 +96,6 @@ const Home = () => {
                     <b>Doctors List | +</b>
                   </button>
                 </div>
-              </div>
-              <div className="right-side">
-                <img
-                  className="h-[10vh] rounded-[50%] cursor-pointer transform: 3s ease-in-out"
-                  src={play}
-                  alt="play"
-                  onClick={() => console.log("playVideo() triggered")}
-                />
               </div>
             </div>
           </div>

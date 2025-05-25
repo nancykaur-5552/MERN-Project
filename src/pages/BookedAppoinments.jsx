@@ -1,20 +1,24 @@
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table, Popconfirm, Typography, message } from 'antd';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
 const BookedAppointments = () => {
     const [appointments, setAppointments] = useState([]);
-
-    useEffect(()=>{
+    useEffect(() => {
         const stored = JSON.parse(localStorage.getItem('appointments')) || [];
-        setAppointments(stored);
-    },[]);
 
-    const handleDelete = (key)=>{
-        const updated = appointments.filter(item=>item.key !== key);
+        const apptsWithKeys = stored.map((item, index) => ({
+            key: item.key || index,
+            ...item,
+        }));
+        setAppointments(apptsWithKeys);
+    }, []);
+
+    const handleDelete = (key) => {
+        const updated = appointments.filter(item => item.key !== key);
         setAppointments(updated);
-        localStorage.setItem('appointments',JSON.stringify(updated));
+        localStorage.setItem('appointments', JSON.stringify(updated));
         message.success('Appointment deleted successfully.');
     }
     const columns = [
@@ -22,11 +26,12 @@ const BookedAppointments = () => {
             title: 'Patient Name',
             dataIndex: 'firstName',
             key: 'firstName',
+            render: (_, record) => `${record.firstName} ${record.lastName}`,
         },
         {
-            title:'Gender',
+            title: 'Gender',
             dataIndex: 'gender',
-            key:'gender',
+            key: 'gender',
         },
         {
             title: 'Date of Appointment',
@@ -34,14 +39,14 @@ const BookedAppointments = () => {
             key: 'date',
         },
         {
-            title: 'Doctor',
-            dataIndex: 'doctor',
-            key: 'doctor',
-        },
-        {
             title: 'Time',
             dataIndex: 'time',
             key: 'time',
+        },
+        {
+            title: 'Doctor',
+            dataIndex: 'doctor',
+            key: 'doctor',
         },
         {
             title: 'Action',
@@ -62,7 +67,10 @@ const BookedAppointments = () => {
     return (
         <>
             <Navbar />
-            <Table dataSource={appointments} columns={columns} rowKey="key" />
+            <Table dataSource={appointments} columns={columns} rowKey="key"
+            pagination = {{pageSize: 5}}
+            locale={{emptyText: 'No booked appointments found.'}}
+            />
             <Footer />
         </>
     );

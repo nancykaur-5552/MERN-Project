@@ -8,7 +8,7 @@ import Pic5 from '../assets/doctor/Pic5.png'
 import Pic6 from '../assets/doctor/Pic6.png'
 import Pic7 from '../assets/doctor/Pic7.png'
 import Pic8 from '../assets/doctor/Pic8.png'
-import bg from '../assets/doctor/bg.avif';
+import bg from '../assets/doctor/bg.avif'
 import Facebook from '../assets/doctor/facebook.png'
 import Instagram from '../assets/doctor/instagram.png'
 import LinkdIn from '../assets/doctor/linkdin.png'

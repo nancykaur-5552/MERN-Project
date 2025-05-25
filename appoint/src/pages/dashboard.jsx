@@ -12,9 +12,7 @@ import {
 } from '@ant-design/icons';
 
 import DoctorsDashboard from './DoctorDashboard';
-import PatientDashboard from './PatientDashboard';
 import AllDoctors from './AllDoctors';
-import AddDoctors from './AddDoctor';
 import BookAppointment from './BookAppointment';
 import Contact from './Contact';
 import {useNavigate} from 'react-router-dom';
@@ -31,14 +29,10 @@ const Dashboard = () => {
       case '1':
         return <DoctorsDashboard />;
       case '2':
-        return <PatientDashboard />;
-      case '3':
         return <AllDoctors />;
-      case '4':
-        return <AddDoctors />;
-      case '5':
+      case '3':
         return <BookAppointment />;
-      case '6':
+      case '4':
         return <Contact />;
       default:
         return <DoctorsDashboard />;
@@ -51,7 +45,7 @@ const Dashboard = () => {
         className="bg-[blue]"
         breakpoint="lg"
         collapsedWidth="0"
-      >
+      > 
         <div>
           <img
             src={Logo}
@@ -67,19 +61,13 @@ const Dashboard = () => {
           <Menu.Item key="1" icon={<MedicineBoxOutlined />}>
             Doctors Dashboard
           </Menu.Item>
-          <Menu.Item key="2" icon={<HeartOutlined />}>
-            Patient Dashboard
-          </Menu.Item>
-          <Menu.Item key="3" icon={<TeamOutlined />}>
+          <Menu.Item key="2" icon={<TeamOutlined />}>
             All Doctors
           </Menu.Item>
-          <Menu.Item key="4" icon={<UserAddOutlined />}>
-            Add Doctor
-          </Menu.Item>
-          <Menu.Item key="5" icon={<CalendarOutlined />}>
+          <Menu.Item key="3" icon={<CalendarOutlined />}>
             Book Appointment
           </Menu.Item>
-          <Menu.Item key="6" icon={<ContactsOutlined />}>
+          <Menu.Item key="4" icon={<ContactsOutlined />}>
             Contact
           </Menu.Item>
         </Menu>
@@ -100,7 +88,7 @@ const Dashboard = () => {
           <Dropdown menu = {{items: [
            {
             key:'profile',
-            label: 'My Profile',
+            label: 'All Doctors',
             icon: <ProfileOutlined/>,
             onClick: () =>setSelectedKey('2'),
           },

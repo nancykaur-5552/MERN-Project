@@ -13,8 +13,8 @@ const LoginAcc = () => {
       const response = await axios.post("http://localhost:4000/api/auth/login", values);
 
       if (response.data.success) {
-        sessionStorage.setItem("username", response.data.email);
-        sessionStorage.setItem("email", response.data.password);
+        sessionStorage.setItem("email", response.data.email);
+        localStorage.setItem('token', response.data.token);
 
         notification.success({
           message: 'Login Successful',
@@ -70,13 +70,19 @@ const LoginAcc = () => {
             <Input.Password placeholder="Enter your password" />
           </Form.Item>
 
+          <div className="text-right mb-4">
+            <NavLink to="/forgotPassword" className="text-blue-400 hover:underline text-sm">
+              Forgot Password?
+            </NavLink>
+          </div>
+
           <Form.Item className='pt-[22px]'>
             <Button type="primary" htmlType="submit" className="w-full bg-[#0066cc] text-white rounded-[5px] hover:bg-[#004b99] hover:border-[white]">
               Login
             </Button>
           </Form.Item>
 
-          <p className="pt-[2em] text-center">Don't have an account? <NavLink to='/createAcc'>Create here</NavLink></p>
+          <p className="pt-[2em] text-center">Don't have an account? <NavLink to="/">Create here</NavLink></p>
         </Form>
       </div>
     </div>

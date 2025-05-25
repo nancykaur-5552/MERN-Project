@@ -56,9 +56,19 @@ const DoctorTable = () => {
   ];
 
   const handleAddDoctor = (values) => {
-    const newDoctor = { ...values, key: doctors.length + 1 };
-    const updatedDoctors = [...doctors, newDoctor];
-    setDoctors(updatedDoctors); 
+    if (editDoctor) {
+      const updatedDoctors = doctors.map(doc =>
+        doc.key === editDoctor.key ? { ...values, key: editDoctor.key } : doc
+      );
+      setDoctors(updatedDoctors);
+      message.success('Doctor updated successfully');
+    } else {
+      const newDoctor = { ...values, key: Date.now() };
+      setDoctors([...doctors, newDoctor]);
+      message.success('Doctor added successfully');
+    }
+    setEditDoctor(null);
+    setIsModalOpen(false);
   };
 
   const handleEdit = (doctor) => {
@@ -69,6 +79,7 @@ const DoctorTable = () => {
   const handleDelete = (key) => {
     const updatedDoctors = doctors.filter(doctor => doctor.key !== key);
     setDoctors(updatedDoctors);
+    message.success('Doctor deleted');
   };
 
   const handleSearch = (e) => {
@@ -140,12 +151,18 @@ const DoctorTable = () => {
       <Modal
         title={editDoctor ? 'Edit Doctor' : 'Add Doctor'}
         open={isModalOpen}
-        onCancel={() => setIsModalOpen(false)}
+        onCancel={() =>{
+          setEditDoctor(null);
+          setIsModalOpen(false);
+        }}
         footer={null}
       >
         <AddDoctorForm
           initialValues={editDoctor}
-          onCancel={() => setIsModalOpen(false)}
+          onCancel={() => {
+            setEditDoctor(null);
+            setIsModalOpen(false);
+          }}
           onAddDoctor={handleAddDoctor}
         />
       </Modal>

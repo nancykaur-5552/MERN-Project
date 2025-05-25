@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import Navbar from '../Navbar'
 import cont from '../../assets/contact/cont.avif'
@@ -13,6 +13,8 @@ import pic5 from '../../assets/doctor/pic5.png'
 import pic7 from '../../assets/doctor/pic7.png'
 import image from '../../assets/doctor/image.png'
 import expert from '../../assets/doctor/expertbg.jpg'
+import ContactForm from '../contactForm'
+
 const Raymond = () => {
     const [para, setpara] = useState(
         <p>
@@ -22,8 +24,8 @@ const Raymond = () => {
     function skill() {
         setpara(
             <>
-            <h2>M.D. , MBBS</h2>
-            <p>Expertise in diagnosing, treating, and managing a wide range of adult diseases, such as diabetes, hypertension, and cardiovascular disorders. Understanding of pharmacology ensures appropriate medication prescriptions while considering potential side effects and drug interactions.Effective time management allows for balancing patient consultations, hospital rounds, and medical documentation using Electronic Health Records (EHR). Collaboration with other healthcare professionals strengthens teamwork and leadership, while continuous learning keeps medical knowledge up to date.</p>
+                <h2>M.D. , MBBS</h2>
+                <p>Expertise in diagnosing, treating, and managing a wide range of adult diseases, such as diabetes, hypertension, and cardiovascular disorders. Understanding of pharmacology ensures appropriate medication prescriptions while considering potential side effects and drug interactions.Effective time management allows for balancing patient consultations, hospital rounds, and medical documentation using Electronic Health Records (EHR). Collaboration with other healthcare professionals strengthens teamwork and leadership, while continuous learning keeps medical knowledge up to date.</p>
             </>
         );
     }
@@ -37,7 +39,7 @@ const Raymond = () => {
     return (
         <>
             <Navbar />
-            <div className='text-center bg-[cover] bg-[center] bg-no-repeat h-[350px]' style={{backgroundImage:`url(${image})`}}>
+            <div className='text-center bg-[cover] bg-[center] bg-no-repeat h-[350px]' style={{ backgroundImage: `url(${image})` }}>
                 <div className="pt-[11pc]">
                     <h1 className='text-[white]'>Our Doctors</h1>
                     <Link className='no-underline text-[white]' to="/">Home&nbsp;//</Link>
@@ -67,8 +69,8 @@ const Raymond = () => {
                     </div>
                 </div>
             </div>
-            <div style={{backgroundImage:`url(${expert})`}}
-                      className="text-center bg-no-repeat bg-cover text-[white] pt-[3em];">
+            <div style={{ backgroundImage: `url(${expert})` }}
+                className="text-center bg-no-repeat bg-cover text-[white] pt-[3em];">
                 <h2 className='pt-[20px]'>Meet Our Team</h2>
                 <h1>Other Specialists</h1>
                 <div className="flex flex-row flex-wrap justify-center items-center gap-[20px]">
@@ -94,23 +96,7 @@ const Raymond = () => {
                     </NavLink>
                 </div>
             </div>
-            <div className="flex justify-center items-center pt-[4em]">
-                            <div className="w-4/5 max-w-[800px] bg-[rgba(183,178,178,0.13)] flex gap-[19px]">
-                                <img src={cont} alt="Contact" />
-                                <form className="flex flex-col gap-[8px] pl-3 pt-[21px]">
-                                <h1>Contact Form</h1>
-                                    <label htmlFor="Name"></label>
-                                    <input className="pl-[9px] w-[24vw] h-[7vh] border  rounded-sm border-solid border-[rgb(204,201,201)]" type="text" placeholder="Your Name" />
-                                    <label htmlFor="Email"></label>
-                                    <input className="pl-[9px] w-[24vw] h-[7vh] border  rounded-sm border-solid border-[rgb(204,201,201)]" type="email" placeholder="Your Email" />
-                                    <label htmlFor="Subject"></label>
-                                    <input className="pl-[9px] w-[24vw] h-[7vh] border rounded-sm border-solid border-[rgb(204,201,201)]" type="text" placeholder="Subject" />
-                                    <label htmlFor="message"></label>
-                                    <textarea className="pl-[9px] w-[24vw] h-[20vh] border pt-3 rounded-sm border-solid border-[rgb(204,201,201)]" placeholder="Message"></textarea>
-                                    <button className="h-[6vh] w-[11vw] bg-[rgb(34,159,34)] text-[white] cursor-pointer border-none">Send Message</button>
-                                </form>
-                            </div>
-                        </div>
+            <ContactForm/>
             <Footer />
         </>
     )
